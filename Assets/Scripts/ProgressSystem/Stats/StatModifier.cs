@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class StatModifier
 {
     public readonly float value;
@@ -15,3 +17,4 @@ public enum TypeModifier
     flat = 100,
     persentAdd = 200,
 }
+

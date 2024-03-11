@@ -15,18 +15,19 @@ public class Stat
         }
     }
     readonly float BaseValue;
-    readonly List<StatModifier> Modifiers;
+    readonly List<StatModifier> Modifiers = new();
+    readonly bool isNegativeable = false;
+
     bool isDirty = true;
-    readonly bool isNegativeable;
     float lastValue;
-    public Stat(float _baseValue = 0, bool isNegativeable = false)
+
+    public Stat(float baseValue = 0, bool isNegativeable = false)
     {
-        Modifiers = new List<StatModifier>();
-        BaseValue = _baseValue;
+        BaseValue = baseValue;
         this.isNegativeable = isNegativeable;
     }
 
-    #region ModifierSystem
+ #region ModifierSystem
     private int CompareModFunc(StatModifier _a, StatModifier _b)
     {
         if (_a.order < _b.order)
@@ -41,8 +42,8 @@ public class Stat
         isDirty = true;
         Modifiers.Sort(CompareModFunc);
     }
-    //может и не пригодиться
-    public bool RemModifier(StatModifier _mod)
+    
+    public bool RemoveModifier(StatModifier _mod)
     {
         if (Modifiers.Remove(_mod))
         {
@@ -51,26 +52,33 @@ public class Stat
         }
         return false;
     }
+
+    public void RemoveAllModifiers()
+    {
+        Modifiers.Clear();
+        isDirty = true;
+    }
+
     float CalcStat()
     {
         float finalValue = BaseValue;
-        for (int i = 0; i < Modifiers.Count; i++)
+
+        foreach (StatModifier modifier in Modifiers) 
         {
-            StatModifier mod = Modifiers[i];
-            if (mod.type == TypeModifier.flat)
+            if (modifier.type == TypeModifier.flat)
             {
-                finalValue += mod.value;
+                finalValue += modifier.value;
             }
             else
             {
-                //если проценты будм считать в сотых, то соточку убираем
-
-                finalValue *= 1 + mod.value / 100;
+                finalValue *= 1 + modifier.value / 100;
             }
         }
+        
         if (!isNegativeable && finalValue < 0)
             return 0;
+
         return finalValue;
     }
-    #endregion
+ #endregion
 }
