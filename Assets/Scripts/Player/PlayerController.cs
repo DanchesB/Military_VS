@@ -47,14 +47,12 @@ public class PlayerController : MonoBehaviour
     {
         _controller.Move(new Vector3(direction.x, 0f, direction.y) * _moveSpeed * Time.deltaTime);
     }
-
     private void ReadMousePoint()
     {        
         Ray mousePointRay = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Physics.Raycast(mousePointRay, out RaycastHit mouseRaycastHit);
         MousePoint = mouseRaycastHit.point;
     }
-
     private void RotationPlayer()
     {
         var dist = MousePoint - transform.position;
