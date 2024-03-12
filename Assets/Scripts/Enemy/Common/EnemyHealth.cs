@@ -4,9 +4,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public event Action<int> OnTakeDamage;
+    public event Action<int> OnDead;
 
     private int health;
     [SerializeField] private int maxHealth;
+    [SerializeField] private Enemy _enemy;
 
     private bool isDead;
 
@@ -38,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Hitted object dead");
         isDead = true;
+        OnDead?.Invoke(_enemy.XpForKilling);
     }
 
     private void DrawCurrentHealth()

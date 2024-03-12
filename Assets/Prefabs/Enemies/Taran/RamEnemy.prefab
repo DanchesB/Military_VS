@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6743913649368407601}
   - component: {fileID: 6100722925081774619}
   - component: {fileID: 785471607078582402}
+  - component: {fileID: -306649263387963883}
   m_Layer: 0
   m_Name: RamEnemy
   m_TagString: Ram1
@@ -187,6 +188,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-306649263387963883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309309288829992348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16685681186c1664fb42c44b67bcf1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xpForKilling: 10
 --- !u!1 &8155796096884399599
 GameObject:
   m_ObjectHideFlags: 0

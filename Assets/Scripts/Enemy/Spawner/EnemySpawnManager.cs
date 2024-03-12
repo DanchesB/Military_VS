@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class EnemySpawnManager : MonoBehaviour
     private Dictionary<string, EnemyPool<Transform>> enemyPools;
     private int currentStep = 0;
     public int startPoolSize = 10;
+
+    public event Action<EnemyHealth> OnSpawned;
 
     private void Start()
     {
@@ -87,9 +90,11 @@ public class EnemySpawnManager : MonoBehaviour
         Transform enemy = pool.GetObject();
         enemy.position = randomSpawnPoint.position;
         enemy.GetComponent<EnemyMovement>().Initialize(target, playerHealth);
+
+        OnSpawned.Invoke(enemy.gameObject.GetComponent<EnemyHealth>());
     }  
     private Transform GetRandomSpawnPoint()
     {
-        return spawnPoints[Random.Range(0, spawnPoints.Length)];
+        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
     }
 }
