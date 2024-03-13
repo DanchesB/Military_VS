@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GradeSO : ScriptableObject
 {
+    [Header("Active Skills")]
     public ActiveSkill ActiveSkill_1;
     public float ActiveValue_1;
     public TypeModifier ActiveModifier_1;
@@ -17,6 +18,7 @@ public class GradeSO : ScriptableObject
     public bool ActiveIsTEmporary_2;
     public float ActiveLifetime_2;
 
+    [Header("Passive Skills")]
     public PassiveSkill PassiveSkill_1;
     public float PassiveValue_1;
     public TypeModifier PassiveModifier_1;

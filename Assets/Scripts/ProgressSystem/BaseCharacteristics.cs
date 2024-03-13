@@ -21,13 +21,6 @@ public abstract class BaseCharacteristics
         coroutineRunner.StartCoroutine(DeBuffCoroutine(param, modifier, lifetime));
     }
 
-    public StatModifier Buff(Stat param, float value, TypeModifier typeModifier)
-    {
-        StatModifier modifier = new(value, typeModifier);
-        param.AddModifier(modifier);
-        return modifier;
-    }
-
     protected IEnumerator DeBuffCoroutine(Stat param, StatModifier modifier, float lifetime)
     {
         yield return new WaitForSeconds(lifetime);
@@ -36,5 +29,6 @@ public abstract class BaseCharacteristics
         Debug.Log("DeBuff");
     }
 
+    public abstract StatModifier Buff(Stat param, float value, TypeModifier typeModifier) ;
     public abstract void DebuffAll();
 }

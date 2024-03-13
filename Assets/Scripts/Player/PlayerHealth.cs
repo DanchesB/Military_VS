@@ -1,10 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth
 {
-    public int currentHealth = 1000;
+    private float currentHealth;
+    private float maxHealth;
+
+    private PlayerCharacteristics _characteristics;
+
+    public PlayerHealth(PlayerCharacteristics characteristics)
+    {
+        _characteristics = characteristics;
+        maxHealth = _characteristics.Hp.Value;
+        currentHealth = maxHealth;
+
+        _characteristics.ChangeHP += ChangeMaxHealth;
+    }
+
+    private void ChangeMaxHealth() =>
+        maxHealth = _characteristics.Hp.Value;
 
     public void HealthReduce(int damage)
     {

@@ -1,6 +1,8 @@
-﻿public class ProgressSystem
+﻿using UnityEngine;
+
+public class ProgressSystem
 {
-    //private readonly XpSystem _xpSystem;
+    //private readonly XpSystem _xpSystem; //will probably be needed
     //private readonly MoneySystem _moneySystem;
     private readonly PlayerCharacteristics _playerCharacteristics;
     private readonly WeaponCharacteristics _weaponCharacteristics;
@@ -15,6 +17,12 @@
         _playerCharacteristics = playerCharacteristics;
         _weaponCharacteristics = weaponCharacteristics;
         _coroutine = coroutine;
+
+        Debug.Log(xpSystem);
+        Debug.Log(moneySystem);
+        Debug.Log(playerCharacteristics);
+        Debug.Log(weaponCharacteristics);
+        Debug.Log(coroutine);
     }
 
     public void AcceptGrade(GradeSO grade)

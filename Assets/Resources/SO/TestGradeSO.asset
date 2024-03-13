@@ -12,4 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca80422d661c3a42bb89908f5c3748a, type: 3}
   m_Name: TestGradeSO
   m_EditorClassIdentifier: 
-  value: 0
+  ActiveSkill_1: 11
+  ActiveValue_1: 0
+  ActiveModifier_1: 200
+  ActiveIsTEmporary_1: 1
+  ActiveLifetime_1: 12
+  ActiveSkill_2: 0
+  ActiveValue_2: 0
+  ActiveModifier_2: 0
+  ActiveIsTEmporary_2: 0
+  ActiveLifetime_2: 0
+  PassiveSkill_1: 0
+  PassiveValue_1: 0
+  PassiveModifier_1: 0
+  PassiveIsTEmporary_1: 0
+  PassiveLifetime_1: 0
+  PassiveSkill_2: 0
+  PassiveValue_2: 0
+  PassiveModifier_2: 0
+  PassiveIsTEmporary_2: 0
+  PassiveLifetime_2: 0

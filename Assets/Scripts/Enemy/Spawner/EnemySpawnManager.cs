@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     public Transform target;
-    public PlayerHealth playerHealth = new PlayerHealth();
+    public PlayerHealth playerHealth;
 
     [Header("EnemySettings")]
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -19,8 +19,12 @@ public class EnemySpawnManager : MonoBehaviour
 
     public event Action<EnemyHealth> OnSpawned;
 
+    public void Init(PlayerCharacteristics playerCharacteristics) => 
+        playerHealth = new PlayerHealth(playerCharacteristics);
+
     private void Start()
     {
+        
         target = FindObjectOfType<Player>().transform;
         enemyPools = new Dictionary<string, EnemyPool<Transform>>();
         for (int i = 0; i < enemyPrefabs.Length; i++)
@@ -91,7 +95,7 @@ public class EnemySpawnManager : MonoBehaviour
         enemy.position = randomSpawnPoint.position;
         enemy.GetComponent<EnemyMovement>().Initialize(target, playerHealth);
 
-        OnSpawned.Invoke(enemy.gameObject.GetComponent<EnemyHealth>());
+        OnSpawned.Invoke(enemy.gameObject.GetComponent<EnemyHealth>());// for ProgressSystem
     }  
     private Transform GetRandomSpawnPoint()
     {

@@ -1,4 +1,7 @@
-﻿public class XpSystem 
+﻿
+using UnityEngine;
+
+public class XpSystem 
 {
     private readonly int _targetXp; //where to get it from?
 
@@ -9,6 +12,9 @@
     {
         _targetXp = targetXp;
         enemySpawnManager.OnSpawned += AddEnemy;
+
+        Debug.Log(enemySpawnManager);
+        Debug.Log(_targetXp); 
     }
 
     private void AddEnemy(EnemyHealth enemyHealth) => 
