@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerHealth
 {
-    private float currentHealth;
-    private float maxHealth;
+    private float currentHealth; 
+    private float maxHealth;// for UI
 
-    private PlayerCharacteristics _characteristics;
+    private readonly PlayerCharacteristics _characteristics;
 
     public PlayerHealth(PlayerCharacteristics characteristics)
     {
@@ -13,10 +13,10 @@ public class PlayerHealth
         maxHealth = _characteristics.Hp.Value;
         currentHealth = maxHealth;
 
-        _characteristics.ChangeHP += ChangeMaxHealth;
+        _characteristics.ChangeHP += UpdateMaxHealth;
     }
 
-    private void ChangeMaxHealth() =>
+    private void UpdateMaxHealth() =>
         maxHealth = _characteristics.Hp.Value;
 
     public void HealthReduce(int damage)

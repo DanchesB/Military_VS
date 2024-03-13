@@ -17,9 +17,9 @@ public class EnemySpawnManager : MonoBehaviour
     private int currentStep = 0;
     public int startPoolSize = 10;
 
-    public event Action<EnemyHealth> OnSpawned;
+    public event Action<EnemyHealth> OnSpawned; // for ProgressSystem
 
-    public void Init(PlayerCharacteristics playerCharacteristics) => 
+    public void Init(PlayerCharacteristics playerCharacteristics) => // for ProgressSystem. Called in BootstrapInstaller
         playerHealth = new PlayerHealth(playerCharacteristics);
 
     private void Start()
