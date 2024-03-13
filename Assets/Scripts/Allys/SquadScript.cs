@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class SquadScript : MonoBehaviour
@@ -7,6 +8,9 @@ public class SquadScript : MonoBehaviour
     public static List<GameObject> PointsSquad => _pointsGameObjects;
     private static int _countPoints = 0;
     private Vector3 offset;
+
+
+    [SerializeField] private int _currentAlly;
 
     [SerializeField] private int _maxPoints = 5;
     [SerializeField] private float _distanceBehindPlayer = 2f;
@@ -30,23 +34,23 @@ public class SquadScript : MonoBehaviour
 
         _pointsGameObjects = new List<GameObject>();
 
-        for (int i = 0; i < 3; i++)
-        {
-            SpawnAlly();
-        }
+       
+         SpawnAlly(_currentAlly);
+        
     }
 
-    private void SpawnAlly()
+    private void SpawnAlly(int currentAlly)
     {
-        if (_countPoints < _maxPoints)
+        if (currentAlly > _maxPoints) return;
+
+        for (int i = 0; i < currentAlly; i++)
         {
             _countPoints++;
             SpawnPoint();
             SetPointsPosition();
-            SpawnAllyPrefab();
+            SpawnAllyPrefab(_pointsGameObjects[i].transform);          
         }
     }
-
     private void SpawnPoint()
     {
         GameObject point = Instantiate(AllyPoint, SquadTransform.position, SquadTransform.rotation);
@@ -61,20 +65,18 @@ public class SquadScript : MonoBehaviour
         {
             point.transform.position = SquadTransform.position;
             point.transform.rotation = SquadTransform.rotation;
-
-            point.transform.rotation = Quaternion.Euler(0, point.transform.rotation.y + (GetAngle() * count++), 0);
-            point.transform.position = point.transform.position + point.transform.forward * _distanceBehindPlayer;
-        }
+            point.transform.rotation = Quaternion.Euler(0, point.transform.rotation.y + (GetAngle() * count++), 0);          
+            point.transform.position = point.transform.position + point.transform.forward * _distanceBehindPlayer;          
+        }     
     }
-
     private float GetAngle()
     {
         return 360f / (1 + _countPoints);
     }
-
-    private void SpawnAllyPrefab()
+    private void SpawnAllyPrefab(Transform point)
     {
-        var ally = Instantiate(AllyPrefab, _pointsGameObjects[_countPoints - 1].transform.position, _pointsGameObjects[_countPoints - 1].transform.rotation);
+        int count = 1;
+        var ally = Instantiate(AllyPrefab, point.position, Quaternion.Euler(0, point.transform.rotation.y + (GetAngle() * count++), 0) );        
         ally.AddComponent<Allys>();
     }
 }
