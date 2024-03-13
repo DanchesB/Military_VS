@@ -3,8 +3,6 @@ using UnityEngine;
 public class SquadMovement : MonoBehaviour
 {
     [HideInInspector] public Transform PlayerTransform;
-
-    private Transform _transform;
     private Vector3 offset;
 
     private void Start()

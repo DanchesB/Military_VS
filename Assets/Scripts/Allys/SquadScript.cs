@@ -5,17 +5,15 @@ using UnityEngine;
 public class SquadScript : MonoBehaviour
 {
     private static List<GameObject> _pointsGameObjects;
+    public static float _distanceToPoint = 0.1f;
     public static List<GameObject> PointsSquad => _pointsGameObjects;
     private static int _countPoints = 0;
     private Vector3 offset;
 
-
     [SerializeField] private int _currentAlly;
-
     [SerializeField] private int _maxPoints = 5;
     [SerializeField] private float _distanceBehindPlayer = 2f;
-
-    [HideInInspector] public Transform PlayerTransform;
+    [SerializeField] private Transform PlayerTransform;
     [SerializeField] private Transform SquadTransform;
 
     public GameObject AllyPoint;
