@@ -6,11 +6,12 @@ public class Allys : MonoBehaviour
     public int NumberAlly{get{return _numberAlly;}}
     private static int _countAllys = 0;
 
+
     private void Awake()
     {
         _numberAlly = ++_countAllys;
 
-        gameObject.AddComponent<AllysMovment>();        
+        gameObject.AddComponent<AllysMovement>();
     }
 
     private void FixedUpdate()
