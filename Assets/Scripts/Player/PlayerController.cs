@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 MousePoint {get; private set;}
     [HideInInspector] public Transform PlayerTransform;
    
-    [SerializeField] private float _moveSpeed = 3;
+    [SerializeField] private float _moveSpeed = 5;
     private CharacterController _controller;
     private Camera _mainCamera;   
 

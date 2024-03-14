@@ -4,7 +4,7 @@ public class AllysMovement : MonoBehaviour
 {    
     private Allys _ally;
     private CharacterController _controller;
-    private float _moveSpeed = 3f;
+    private float _moveSpeed = 5f;
     private Vector2 _directionAnimation;
     private Transform _pointTransform;
     private PlayerView playerView;

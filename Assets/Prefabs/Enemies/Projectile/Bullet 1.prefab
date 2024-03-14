@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9085788235839483561}
   - component: {fileID: 4108116128176712574}
   - component: {fileID: -6350322666536376062}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Bullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bulletSpeed: 5
+  desiredFlightTime: 2
   ballHeigh: 10
 --- !u!114 &-9085788235839483561
 MonoBehaviour:
@@ -165,7 +165,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 447
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
