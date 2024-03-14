@@ -186,6 +186,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1125870194378544688}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8641011347861927003}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2534691141788236133}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3353211522927621819}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8899047795294952457}
   m_SourcePrefab: {fileID: 100100000, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
 --- !u!1 &600517339337285283 stripped
 GameObject:
@@ -239,3 +251,57 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &8641011347861927003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600517339337285283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8c533f1fee6cf4d9c80adb01ad7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2534691141788236133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600517339337285283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ff0ef032727de41910906c4fa5672f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTransform: {fileID: 0}
+  playerSo: {fileID: 11400000, guid: b6330d617a9bfc94eaf34ad69853d3dc, type: 2}
+--- !u!114 &3353211522927621819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600517339337285283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a497ed0027514e84a6b0eeafb793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8899047795294952457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600517339337285283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221a18afb9530c148bef7b0d97f7b5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponStatsSO: {fileID: 11400000, guid: 82449862081e6864993b4b6acdcaa1cc, type: 2}
+  projectilePrefab: {fileID: 988347368133046738, guid: 5e9b7300bda9f764989bbb0c242c9b58, type: 3}
+  spawnOffset: {x: 0, y: 1.5, z: 1}
+  weaponSo: {fileID: 11400000, guid: 507f36188b400cb4283310421ce361c7, type: 2}

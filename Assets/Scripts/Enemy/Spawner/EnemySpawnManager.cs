@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawnManager : MonoBehaviour
 {
     public Transform target;
-    public PlayerHealth playerHealth = new PlayerHealth();
+    //public PlayerHealth playerHealth = new PlayerHealth();
 
     [Header("EnemySettings")]
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -15,6 +17,8 @@ public class EnemySpawnManager : MonoBehaviour
     private Dictionary<string, EnemyPool<Transform>> enemyPools;
     private int currentStep = 0;
     public int startPoolSize = 10;
+
+    public event Action<EnemyHealth> OnSpawned;
 
     private void Start()
     {
@@ -26,10 +30,10 @@ public class EnemySpawnManager : MonoBehaviour
             enemyPools.Add(enemyPrefabs[i].tag, new EnemyPool<Transform>(enemyPrefabs[i].GetComponent<Transform>(),
                                                                       startPoolSize,
                                                                       enemyContainer.transform));
-            Debug.Log("Нажмите Space для следующей волны противников");
+            Debug.Log("РќР°Р¶РјРёС‚Рµ Space РґР»СЏ СЃР»РµРґСѓСЋС‰РµР№ РІРѕР»РЅС‹ РїСЂРѕС‚РёРІРЅРёРєРѕРІ");
         }
 
-        Debug.Log("ступень спавна " + currentStep);
+        Debug.Log("СЃС‚СѓРїРµРЅСЊ СЃРїР°РІРЅР° " + currentStep);
         StartNextSpawnStep();
     }
 
@@ -41,7 +45,7 @@ public class EnemySpawnManager : MonoBehaviour
             currentStep++;
         }
         else      
-            Debug.Log("Ступени спавна кончились");
+            Debug.Log("РЎС‚СѓРїРµРЅРё СЃРїР°РІРЅР° РєРѕРЅС‡РёР»РёСЃСЊ");
     }
 
     private IEnumerator SpawnEnemiesOnStep(StepSpawnConfig stepConfig)
@@ -71,11 +75,11 @@ public class EnemySpawnManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("неверный тип врагов: " + enemyType);
+                Debug.LogWarning("РЅРµРІРµСЂРЅС‹Р№ С‚РёРї РІСЂР°РіРѕРІ: " + enemyType);
             }
         }
 
-        Debug.Log("ступень спавна " + currentStep);
+        Debug.Log("СЃС‚СѓРїРµРЅСЊ СЃРїР°РІРЅР° " + currentStep);
 
         yield return new WaitForSeconds(stepConfig.spawnTime);
         StartNextSpawnStep();
@@ -86,7 +90,8 @@ public class EnemySpawnManager : MonoBehaviour
         Transform randomSpawnPoint = GetRandomSpawnPoint();      
         Transform enemy = pool.GetObject();
         enemy.position = randomSpawnPoint.position;
-        enemy.GetComponent<EnemyMovement>().Initialize(target, playerHealth);
+        //enemy.GetComponent<EnemyMovement>().Initialize(target, playerHealth);
+        OnSpawned?.Invoke(enemy.gameObject.GetComponent<EnemyHealth>());
     }  
     private Transform GetRandomSpawnPoint()
     {

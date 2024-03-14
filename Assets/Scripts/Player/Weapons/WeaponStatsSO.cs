@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Temp")]
 public class WeaponStatsSO : ScriptableObject
 {
     public enum WeaponType
@@ -9,10 +10,6 @@ public class WeaponStatsSO : ScriptableObject
         Ranged,
         Melee
     }
-
-    public int damage;
-    public float fireRate;
-    public float spread;
 
     public WeaponType type;
 }

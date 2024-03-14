@@ -8,7 +8,7 @@ public abstract class BaseCharacteristics
     /// from Buff to Change and pass negative values ​​to them. Or create new ones, since values ​​of the
     /// State type are changed through AddModifier.
     /// </summary>
-    /// <param name="param">Characteristic we changed</param>
+    /// <param name="param">ActiveSkill we changed</param>
     /// <param name="value">The value to which we change</param>
     /// <param name="typeModifier">Percentage or absolute value</param>
     /// <param name="lifetime">Duration of the temporary change</param>
@@ -21,13 +21,6 @@ public abstract class BaseCharacteristics
         coroutineRunner.StartCoroutine(DeBuffCoroutine(param, modifier, lifetime));
     }
 
-    public StatModifier Buff(Stat param, float value, TypeModifier typeModifier)
-    {
-        StatModifier modifier = new(value, typeModifier);
-        param.AddModifier(modifier);
-        return modifier;
-    }
-
     protected IEnumerator DeBuffCoroutine(Stat param, StatModifier modifier, float lifetime)
     {
         yield return new WaitForSeconds(lifetime);
@@ -36,5 +29,6 @@ public abstract class BaseCharacteristics
         Debug.Log("DeBuff");
     }
 
+    public abstract StatModifier Buff(Stat param, float value, TypeModifier typeModifier) ;
     public abstract void DebuffAll();
 }

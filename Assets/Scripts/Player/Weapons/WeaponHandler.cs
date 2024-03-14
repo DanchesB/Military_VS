@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] private WeaponStatsSO weapon;
+    private WeaponCharacteristics weaponCharacteristics;
+    [SerializeField] private WeaponStatsSO weaponStatsSO;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Vector3 spawnOffset;
+    [SerializeField] private WeaponSO weaponSo;
 
     private bool readyToAttack = true;
 
+    private void Start()
+    {
+        weaponCharacteristics = new WeaponCharacteristics(Instantiate(weaponSo) );
+    }
+    
     private void Update()
     {
         if (readyToAttack)
         {
             readyToAttack = false;
 
-            switch (weapon.type)
+            switch (weaponStatsSO.type)
             {
                 case WeaponStatsSO.WeaponType.Ranged:
                     GameObject obj = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
@@ -27,7 +34,7 @@ public class WeaponHandler : MonoBehaviour
                 break;
             }
 
-            Invoke(nameof(ResetAttack), weapon.fireRate);
+            Invoke(nameof(ResetAttack), weaponCharacteristics.CoolDown.Value);
         }
     }
 

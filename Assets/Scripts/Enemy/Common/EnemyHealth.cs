@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public event Action<int> OnTakeDamage;
+    public event Action<int> OnDead;
 
     private int health;
     [SerializeField] private int maxHealth;

@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class PlayerHealth
 {
-    public int currentHealth = 1000;
+    private float currentHealth;
+    private float maxHealth;
+    private PlayerCharacteristics playerCharacteristics;
+
+    public PlayerHealth(PlayerCharacteristics characteristics)
+    {
+        playerCharacteristics = characteristics;
+        maxHealth = playerCharacteristics.Hp.Value;
+        currentHealth = maxHealth;
+        characteristics.ChangeHP += UpdateMaxHealth;
+    }
+
+    private void UpdateMaxHealth()
+    {
+        maxHealth = playerCharacteristics.Hp.Value;
+    }
 
     public void HealthReduce(int damage)
     {

@@ -30,4 +30,11 @@ public class WeaponCharacteristics : BaseCharacteristics
         BulletsNumber.RemoveAllModifiers();
         DamageArea.RemoveAllModifiers();
     }
+
+    public override StatModifier Buff(Stat param, float value, TypeModifier typeModifier)
+    {
+        StatModifier modifier = new(value, typeModifier);
+        param.AddModifier(modifier);
+        return modifier;
+    }
 }

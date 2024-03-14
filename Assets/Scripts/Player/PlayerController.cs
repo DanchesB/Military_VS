@@ -1,64 +1,64 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerController : MonoBehaviour
-{
-    public static PlayerController Instance;
-    public Vector2 DirectionMove {set; get;}
-    public Vector3 MousePoint {get; private set;}
-    [HideInInspector] public Transform PlayerTransform;
-   
-    [SerializeField] private float _moveSpeed = 3;
-    private CharacterController _controller;
-    private Camera _mainCamera;   
-
-    public void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        public static PlayerController Instance;
+        public Vector2 DirectionMove {set; get;}
+        public Vector3 MousePoint {get; private set;}
+        [HideInInspector] public Transform PlayerTransform;
         
-        PlayerTransform = GetComponent<Transform>();
+        private CharacterController _controller;
+        private Camera _mainCamera;   
+        [SerializeField] PlayerSO playerSo;
+        private PlayerCharacteristics playerCharacteristics;
+        public void Awake()
+        {
+            playerCharacteristics = new PlayerCharacteristics( Instantiate(playerSo));
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        
+            PlayerTransform = GetComponent<Transform>();
 
-        _controller = GetComponent<CharacterController>();
-        _mainCamera = Camera.main;
-    }
-    
-    private void Update()
-    {
-        ReadMousePoint();
-    }
+            _controller = GetComponent<CharacterController>();
+            _mainCamera = Camera.main;
+        }
 
-    private void FixedUpdate()
-    {
-        if(_controller == null)
-            return;
+        private void Update()
+        {
+            ReadMousePoint();
+        }
 
-        Move(PlayerInput.Instance.Direction);
-        RotationPlayer();
-    }
+        private void FixedUpdate()
+        {
+            if(_controller == null)
+                return;
 
-    private void Move(Vector2 direction)
-    {
-        _controller.Move(new Vector3(direction.x, 0f, direction.y) * _moveSpeed * Time.deltaTime);
-    }
+            Move(PlayerInput.Instance.Direction);
+            RotationPlayer();
+        }
 
-    private void ReadMousePoint()
-    {        
-        Ray mousePointRay = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Physics.Raycast(mousePointRay, out RaycastHit mouseRaycastHit);
-        MousePoint = mouseRaycastHit.point;
-    }
+        private void Move(Vector2 direction)
+        {
+            _controller.Move(new Vector3(direction.x, 0f, direction.y) * playerCharacteristics.MoveSpeed.Value * Time.deltaTime);
+        }
 
-    private void RotationPlayer()
-    {
-        var dist = MousePoint - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(dist, transform.TransformDirection(Vector3.up));
-        transform.rotation = new Quaternion(0, rotation.y, 0, rotation.w);
+        private void ReadMousePoint()
+        {        
+            Ray mousePointRay = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Physics.Raycast(mousePointRay, out RaycastHit mouseRaycastHit);
+            MousePoint = mouseRaycastHit.point;
+        }
+
+        private void RotationPlayer()
+        {
+            var dist = MousePoint - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(dist, transform.TransformDirection(Vector3.up));
+            transform.rotation = new Quaternion(0, rotation.y, 0, rotation.w);
+        }
     }
-}

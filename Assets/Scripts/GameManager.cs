@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
    {
-        var playerPrefab = Instantiate(_player, new Vector3(0.0f, 0, 0), Quaternion.identity);      
-        playerPrefab.AddComponent<Player>();    
+        var playerPrefab = Instantiate(_player, new Vector3(0.0f, 0, 0), Quaternion.identity);
 
         countdownTimer = FindObjectOfType<CountdownTimerUI>();
         progressSlider = FindObjectOfType<Slider>();
