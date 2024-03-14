@@ -1,9 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
-public class Weapon:MonoBehaviour
+namespace Test
 {
-    public void Shoot(Vector2 vec)
+    public class Weapon:MonoBehaviour
     {
+        public void Shoot(Vector2 vec)
+        {
         
+        }
     }
 }
