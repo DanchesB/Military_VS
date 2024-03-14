@@ -32,12 +32,15 @@ public class AllysMovement : MonoBehaviour
 
 
     private void UpdateDirection()
-    {
-        var position = SquadScript.PointsSquad[_ally.NumberAlly - 1].transform.position;
-        Vector3 directionVector = position - transform.position;   
-        Quaternion rotation = Quaternion.Euler(0f, -transform.rotation.eulerAngles.y, 0f);
-        directionVector = rotation * directionVector;            
-        _directionAnimation = new Vector2(directionVector.x, directionVector.z).normalized;     
+    {    
+        if(SquadScript.PointsSquad[_ally.NumberAlly - 1].transform.position != null)
+        {
+            var position = SquadScript.PointsSquad[_ally.NumberAlly - 1].transform.position;
+            Vector3 directionVector = position - transform.position;
+            Quaternion rotation = Quaternion.Euler(0f, -transform.rotation.eulerAngles.y, 0f);
+            directionVector = rotation * directionVector;
+            _directionAnimation = new Vector2(directionVector.x, directionVector.z).normalized;
+        }          
     }
 
     private void Move()

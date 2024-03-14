@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class SquadScript : MonoBehaviour
@@ -30,12 +29,45 @@ public class SquadScript : MonoBehaviour
         PlayerTransform = PlayerController.Instance.PlayerTransform;
         offset = PlayerTransform.TransformDirection(Vector3.back) * -_distanceBehindPlayer;
 
-        _pointsGameObjects = new List<GameObject>();
-
-       
-         SpawnAlly(_currentAlly);
-        
+        _pointsGameObjects = new List<GameObject>();               
     }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            AddAlly();
+        }       
+    }
+
+    public void AddAlly()
+    {     
+        if(_currentAlly <= _maxPoints)
+        {
+            _currentAlly++;
+            SpawnAlly(1);
+        }
+        else
+            Debug.Log("MaxAlly");
+    }
+
+   /* public void RemoveAlly()
+    {    
+        if (_pointsGameObjects.Count > 0)
+        {
+            _pointsGameObjects[_pointsGameObjects.Count - 1].SetActive(false);
+                         
+            _pointsGameObjects.RemoveAt(_pointsGameObjects.Count - 1);
+
+            
+            _currentAlly--;
+        }
+        else
+        {
+            Debug.Log("Отряд пуст. Нечего удалять.");
+        }
+    }*/                                                                 // после прописки смерти союзника дописать
+
 
     private void SpawnAlly(int currentAlly)
     {
