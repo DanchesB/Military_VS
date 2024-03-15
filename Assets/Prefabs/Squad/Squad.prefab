@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 1933871395819693171}
   - component: {fileID: 8016246917822851596}
   - component: {fileID: 4122963975093039629}
-  - component: {fileID: 107199182417159679}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5228206943194601421}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &107199182417159679
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5228206943194601421}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5613596476322809082
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8857458278793785200}
   - component: {fileID: 4705360817764416700}
+  - component: {fileID: 7380410420001399637}
   m_Layer: 0
   m_Name: Squad
   m_TagString: Untagged
@@ -150,9 +129,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea284c1e487e3240a4a2663be4b5817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentAlly: 0
   _maxPoints: 5
-  _distanceBehindPlayer: 1
+  _distanceBehindPlayer: 2
   PlayerTransform: {fileID: 0}
-  SquadTransform: {fileID: 0}
+  SquadTransform: {fileID: 1933871395819693171}
   AllyPoint: {fileID: 1639775429896067536, guid: a1a381b886bf1f946a8979565f8ce23a, type: 3}
   AllyPrefab: {fileID: 600517339337285283, guid: 069c76fc020bb934c8db60e2011fc85c, type: 3}
+  _moveSpeed: 5
+--- !u!114 &7380410420001399637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5613596476322809082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a76c039211da045a87436862e9b479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTransform: {fileID: 0}
