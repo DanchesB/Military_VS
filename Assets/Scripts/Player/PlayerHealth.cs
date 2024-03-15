@@ -10,12 +10,14 @@ public class PlayerHealth
     {
         if (currentHealth > 0)
         {
-            currentHealth = currentHealth - damage;
+            currentHealth -= damage;
             Debug.Log(currentHealth);
             if (currentHealth <= 0)
             {
                 Debug.Log("You Dead!");
             }
+
+            GameObject.Find("Health Bar").GetComponent<ResourceBarUI>().SetBarAmount((float)currentHealth / 1000);
         }
     }
 }
