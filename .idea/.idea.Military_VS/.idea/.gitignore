@@ -2,10 +2,17 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
+<<<<<<< Updated upstream
 /projectSettingsUpdater.xml
 /contentModel.xml
 /.idea.Military_VS.iml
 /modules.xml
+=======
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Military_VS.iml
+>>>>>>> Stashed changes
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
