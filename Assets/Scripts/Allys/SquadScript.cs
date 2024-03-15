@@ -42,7 +42,7 @@ public class SquadScript : MonoBehaviour
 
     public void AddAlly()
     {     
-        if(_currentAlly <= _maxPoints)
+        if(_currentAlly < _maxPoints)
         {
             _currentAlly++;
             SpawnAlly(1);
@@ -64,9 +64,9 @@ public class SquadScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Отряд пуст. Нечего удалять.");
+            Debug.Log("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
         }
-    }*/                                                                 // после прописки смерти союзника дописать
+    }*/                                                                 // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 
     private void SpawnAlly(int currentAlly)
