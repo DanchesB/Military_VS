@@ -1,10 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth
 {
-    public int currentHealth = 1000;
+    public float currentHealth;
+
+    private float _maxHealth;// screw the ProgressSystem
+
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    public PlayerHealth(PlayerCharacteristics characteristics)
+    {
+        _maxHealth = characteristics.Hp.Value;
+        currentHealth = _maxHealth;
+
+        characteristics.ChangeHP += ChangeMaxHp;
+    }
+
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    private void ChangeMaxHp(float value) => 
+        _maxHealth = value;
 
     public void HealthReduce(int damage)
     {
@@ -17,7 +34,8 @@ public class PlayerHealth
                 Debug.Log("You Dead!");
             }
 
-            GameObject.Find("Health Bar").GetComponent<ResourceBarUI>().SetBarAmount((float)currentHealth / 1000);
+            GameObject.Find("Health Bar").GetComponent<ResourceBarUI>().
+                SetBarAmount(currentHealth / _maxHealth);// screw the ProgressSystem
         }
     }
 }

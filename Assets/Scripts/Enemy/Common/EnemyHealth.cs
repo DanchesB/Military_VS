@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public event Action<int> OnTakeDamage;
+    public event Action<float> OnTakeDamage;
 
-    private int health;
+    private float health;
     [SerializeField] private int maxHealth;
 
     private bool isDead;
 
-    public int CurrentHealth => health;   
+    public float CurrentHealth => health;   
 
 
     void Awake()
@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
 

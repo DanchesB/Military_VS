@@ -60,9 +60,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -910168554888888556, guid: c424e3e3612b5af48b1c9bfe97a097fd, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c424e3e3612b5af48b1c9bfe97a097fd, type: 3}
       propertyPath: m_Name
       value: ammo_machinegunLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c424e3e3612b5af48b1c9bfe97a097fd, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607668393258877731, guid: c424e3e3612b5af48b1c9bfe97a097fd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -92,9 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c14e89cc27a6284ab482404d318a2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   destroyDelay: 5
-  damage: 10
 --- !u!136 &-8242728706599508690
 CapsuleCollider:
   m_ObjectHideFlags: 0

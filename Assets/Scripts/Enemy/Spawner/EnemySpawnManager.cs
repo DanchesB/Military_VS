@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     public Transform target;
-    public PlayerHealth playerHealth = new PlayerHealth();
+    public PlayerHealth playerHealth;// = new PlayerHealth();
 
     [Header("EnemySettings")]
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -16,8 +16,17 @@ public class EnemySpawnManager : MonoBehaviour
     private int currentStep = 0;
     public int startPoolSize = 10;
 
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    private const string SOPath = "DefaultSO/DefaultPlayerSO";
+    private PlayerCharacteristics _characteristics;
+
     private void Start()
     {
+        playerHealth = new(DefaultCharacteristicsImplementation());// screw the ProgressSystem
+
+
         target = FindObjectOfType<Player>().transform;
         enemyPools = new Dictionary<string, EnemyPool<Transform>>();
         for (int i = 0; i < enemyPrefabs.Length; i++)
@@ -32,6 +41,12 @@ public class EnemySpawnManager : MonoBehaviour
         Debug.Log("ступень спавна " + currentStep);
         StartNextSpawnStep();
     }
+
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    private PlayerCharacteristics DefaultCharacteristicsImplementation() =>
+        _characteristics = new(Instantiate(Resources.Load<PlayerSO>(SOPath)));
 
     private void StartNextSpawnStep()
     {
