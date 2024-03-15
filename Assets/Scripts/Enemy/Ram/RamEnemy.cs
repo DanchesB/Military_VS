@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class RamEnemy : MonoBehaviour, ICanAttack
 {
-    private PlayerHealth playerHealth;
-    [SerializeField] private Transform target;
+    protected PlayerHealth playerHealth;
+    private Transform target;
     [SerializeField] private float chargeSpeed;
     public float attackCooldown = 3f;
     private Vector3 direc;
     private Vector3 initialPosition;
+    protected Vector3 spawnPosition;
     private Quaternion initialRotation;
-    private EnemyMovement enemyMovement;
+    protected EnemyMovement enemyMovement;
 
-    private bool isCharging = false;
-    private bool isCoolingDown = false;
-    private bool isDirecSwap = false;
+    protected bool isCharging = false;
+    protected bool isCoolingDown = false;
+    protected bool isDirecSwap = false;
+    protected bool isEndAttack = false;
+    protected bool isAttacking = false;
 
-    [SerializeField] private int damage;
+    [SerializeField] protected int damage;
 
     private void Start()
     {
@@ -26,7 +29,7 @@ public class RamEnemy : MonoBehaviour, ICanAttack
         target = enemyMovement.target;
     }
 
-    private IEnumerator ChargeAttack()
+    protected IEnumerator ChargeAttack()
     {
         isCharging = true;
         initialPosition = new Vector3(target.position.x, 1f, target.transform.position.z);
@@ -79,7 +82,7 @@ public class RamEnemy : MonoBehaviour, ICanAttack
         isCoolingDown = false;
     }
 
-    private float GetDistance()
+    protected float GetDistance()
     {
         return Vector3.Distance(transform.position, target.transform.position);
     }

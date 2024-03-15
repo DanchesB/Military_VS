@@ -337,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &217137056
 Transform:
   m_ObjectHideFlags: 0
@@ -451,74 +451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 0}
---- !u!1 &458360181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 458360184}
-  - component: {fileID: 458360183}
-  - component: {fileID: 458360182}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &458360182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458360181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &458360183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458360181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &458360184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458360181}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &463241575
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &608565270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,9 +647,9 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyPrefabs:
   - {fileID: 6257247099378526410, guid: 8d85d304c25a15f49ab1ee4e12ab5f34, type: 3}
-  - {fileID: 7309309288829992348, guid: 817a053ef29f214468d46211aabeb5fc, type: 3}
   - {fileID: 1521675271789319989, guid: 571d352bf85ac2f4c8443a5881416238, type: 3}
   - {fileID: 1213254798002941430, guid: 8c4c7814dc89d4b448e18a72fa2ea31d, type: 3}
+  - {fileID: 7309309288829992348, guid: 817a053ef29f214468d46211aabeb5fc, type: 3}
   spawnPoints:
   - {fileID: 130247155}
   - {fileID: 1523548443}
@@ -739,14 +671,9 @@ MonoBehaviour:
   - {fileID: 875739042}
   stepSpawnConfigs:
   - melee1EnemyAmount: 0
-    ram1EnemyAmount: 2
+    ram1EnemyAmount: 23
     spit1EnemyAmount: 0
-    projectile1EnemyAmount: 15
-    spawnTime: 20
-  - melee1EnemyAmount: 10
-    ram1EnemyAmount: 0
-    spit1EnemyAmount: 0
-    projectile1EnemyAmount: 3
+    projectile1EnemyAmount: 0
     spawnTime: 20
   startPoolSize: 15
 --- !u!4 &608565271
@@ -1983,4 +1910,3 @@ SceneRoots:
   - {fileID: 217137056}
   - {fileID: 608565271}
   - {fileID: 73569720}
-  - {fileID: 458360184}

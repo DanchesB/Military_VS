@@ -5,8 +5,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public event Action<int> OnTakeDamage;
 
-    private int health;
-    [SerializeField] private int maxHealth;
+    public int health;
+    public int maxHealth;
 
     private bool isDead;
 

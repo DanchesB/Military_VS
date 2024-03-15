@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
    
     [SerializeField] private float _moveSpeed = 5;
     private CharacterController _controller;
-    private Camera _mainCamera;   
+    private Camera _mainCamera;
+
+    [HideInInspector] public bool isStunned = false;
+    [HideInInspector] public bool isRetreat = false;
 
     public void Awake()
     {
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_controller == null)
+        if(_controller == null && isStunned)
             return;
 
         Move(PlayerInput.Instance.Direction);
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ReadMousePoint()
     {        
+
         Ray mousePointRay = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Physics.Raycast(mousePointRay, out RaycastHit mouseRaycastHit);
         MousePoint = mouseRaycastHit.point;
