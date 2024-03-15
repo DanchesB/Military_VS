@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Hp>k__BackingField: 1000
   <Armour>k__BackingField: 50
-  <MoveSpeed>k__BackingField: 10
+  <MoveSpeed>k__BackingField: 3
   <Luck>k__BackingField: 5

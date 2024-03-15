@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         var playerPrefab = Instantiate(_player, new Vector3(0.0f, 0, 0), Quaternion.identity);
         playerPrefab.AddComponent<Player>();
+        playerPrefab.AddComponent<WeaponController>();
 
         weaponHolder = Finder.FindDeepChild(playerPrefab.transform, "WeaponHolder");
         

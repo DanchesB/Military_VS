@@ -37,6 +37,43 @@ public class SquadScript : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            AddAlly();
+        }       
+    }
+
+    public void AddAlly()
+    {     
+        if(_currentAlly < _maxPoints)
+        {
+            _currentAlly++;
+            SpawnAlly(1);
+        }
+        else
+            Debug.Log("MaxAlly");
+    }
+
+   /* public void RemoveAlly()
+    {    
+        if (_pointsGameObjects.Count > 0)
+        {
+            _pointsGameObjects[_pointsGameObjects.Count - 1].SetActive(false);
+                         
+            _pointsGameObjects.RemoveAt(_pointsGameObjects.Count - 1);
+
+            
+            _currentAlly--;
+        }
+        else
+        {
+            Debug.Log("����� ����. ������ �������.");
+        }
+    }*/                                                                 // ����� �������� ������ �������� ��������
+
+
     private void SpawnAlly(int currentAlly)
     {
         if (currentAlly > _maxPoints) return;
