@@ -1,41 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f; // Скорость пули
     [SerializeField] private float destroyDelay = 5f;
-    public int damage = 10;
-    private EnemyHealth enemyhealth;
 
+    private EnemyHealth enemyhealth;
     private Vector3 direction; // Направление движения пули
 
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    private WeaponCharacteristics _characteristics;
+
     // Метод для установки направления движения пули
-    public void SetDirection(Vector3 dir)
+    public void SetParams(Vector3 dir, WeaponCharacteristics characteristics)//Rename /from SetDirection
     {
+        _characteristics = characteristics;// screw the ProgressSystem
         direction = dir.normalized;
     }
 
-    private void Start()
-    {
+    private void Start() => 
         // Уничтожаем пулю через заданное время
         Destroy(gameObject, destroyDelay);
-    }
 
-    private void Update()
-    {
+    private void Update() =>
+
         // Двигаем пулю в заданном направлении
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
-    }
+        transform.Translate(direction * _characteristics.AttackSpeed.Value * Time.deltaTime, Space.World);
 
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
         enemyhealth = collision.gameObject.GetComponent<EnemyHealth>();
-        enemyhealth.TakeDamage(damage);
+        enemyhealth.TakeDamage(_characteristics.DamageDealt.Value); // screw the ProgressSystem
     }
 }
 

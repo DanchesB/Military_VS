@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour, IDamageble
@@ -33,8 +32,13 @@ public class Player : MonoBehaviour, IDamageble
     // [SerializeField] private GameObject _player;
 
     // public void Init(PlayerSO _so, int _wpMax)
+
+   
+
     public void Awake()
-    { 
+    {
+        
+
         gameObject.AddComponent<PlayerInput>();
         gameObject.AddComponent<PlayerController>();
         
@@ -87,6 +91,9 @@ public class Player : MonoBehaviour, IDamageble
         // playerController.Init();
         // playerController.SubsctibeToMove(ally.GetComponent<Ally>().SetCorrectAnimation);
     }
+
+    
+
     private void Update()
     {
         // if (alive)

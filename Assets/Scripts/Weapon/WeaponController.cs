@@ -2,21 +2,38 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    private GameManager _gameManager;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject weapon;
-    private GameObject instantiatedWeapon;
-    [SerializeField] private float fireRate = 0.5f;
-    private float nextFire = 0.0f;
     [SerializeField] private GameObject bulletPrefab;
+
+    private GameManager _gameManager;
     private GameObject bulletspawnPoint;
+    private GameObject instantiatedWeapon;
+    private float nextFire = 0.0f;
+
+    private const string PulletSpanbPointName = "BulletSpawnPoint";
+
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+
+    private const string SOPath = "DefaultSO/DefaultWeaponSO";
+    private WeaponCharacteristics _characteristics;
 
     private void Awake()
     {
+        DefaultCharacteristicsImplementation();
+
         _gameManager = FindObjectOfType<GameManager>();
         player = gameObject;
-        bulletspawnPoint = GameObject.Find("BulletSpawnPoint");
+        bulletspawnPoint = GameObject.Find(PulletSpanbPointName);
     }
+
+    /// <summary>
+    /// screw the ProgressSystem
+    /// </summary>
+    private void DefaultCharacteristicsImplementation() => 
+        _characteristics = new(Instantiate(Resources.Load<WeaponSO>(SOPath)));
 
     private void Start()
     {
@@ -37,7 +54,7 @@ public class WeaponController : MonoBehaviour
         if (Time.time > nextFire)
         {
             Shoot();
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + 1/_characteristics.CoolDown.Value;
         }
     }
 
@@ -54,7 +71,7 @@ public class WeaponController : MonoBehaviour
         Bullet bulletComponent = bullet.GetComponent<Bullet>();
         if (bulletComponent != null)
         {
-            bulletComponent.SetDirection(direction);
+            bulletComponent.SetParams(direction, _characteristics);
         }
     }
 }

@@ -331,6 +331,7 @@ MonoBehaviour:
   weapon: {fileID: 5526553944623110348, guid: 45047de0e58cd764f880db5a32ff4d3a, type: 3}
   fireRate: 0.5
   bulletPrefab: {fileID: 5868501239730168250, guid: 4d5a450b2385f5a49879754b82c9ffd8, type: 3}
+  bulletspawnPoint: {fileID: 7032227265588957216}
 --- !u!4 &2099154945278188602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 0def0db0e4665e14e87c6263274fa0da, type: 3}
