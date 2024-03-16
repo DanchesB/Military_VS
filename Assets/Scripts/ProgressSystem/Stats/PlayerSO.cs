@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New PlayerSO", menuName = "PlayerSO")]
 public class PlayerSO : ScriptableObject
 {
+    
+    
     [field: SerializeField]
     public float Hp { get; private set; }
 

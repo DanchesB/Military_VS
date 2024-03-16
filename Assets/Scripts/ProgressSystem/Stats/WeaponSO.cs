@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New WeaponSO", menuName = "WeaponSO")]
 public class WeaponSO : ScriptableObject
 {
+    [field: SerializeField, Tooltip("Ranged/Melee")]
+    public WeaponType WeaponType { get; private set; }
+
     [field: SerializeField, Tooltip("Bullet/attack speed")] 
     public float   AttackSpeed { get; private set; }
 
@@ -41,4 +44,11 @@ public class WeaponSO : ScriptableObject
 
         DamageArea = temp.DamageArea;
     }
+}
+
+
+public enum WeaponType
+{
+    Ranged,
+    Melee
 }

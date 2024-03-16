@@ -1,5 +1,7 @@
 public class WeaponCharacteristics : BaseCharacteristics
 {
+    public WeaponType WeaponType { get; private set; }
+
     public Stat AttackSpeed { get; private set; }
     public Stat CoolDown { get; private set; }
     public Stat DamageDealt { get; private set; }
@@ -11,6 +13,8 @@ public class WeaponCharacteristics : BaseCharacteristics
 
     public WeaponCharacteristics(WeaponSO weaponStats)
     {
+        WeaponType = weaponStats.WeaponType;
+
         AttackSpeed = new(weaponStats.AttackSpeed);
         CoolDown = new(weaponStats.CoolDown);
         DamageDealt = new(weaponStats.DamageDealt);
