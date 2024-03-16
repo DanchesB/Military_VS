@@ -1,12 +1,10 @@
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "New PlayerSO", menuName = "PlayerSO")]
+[CreateAssetMenu(fileName = "DefaultPlayerSO", menuName = "PlayerSO")]
 public class PlayerSO : ScriptableObject
 {
-    
-    
-    [field: SerializeField]
+    [field: SerializeField, Tooltip("Maximum Health Value")]
     public float Hp { get; private set; }
 
     [field: SerializeField]

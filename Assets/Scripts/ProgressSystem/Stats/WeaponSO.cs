@@ -1,16 +1,16 @@
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "New WeaponSO", menuName = "WeaponSO")]
+[CreateAssetMenu(fileName = "DefaultWeaponSO", menuName = "WeaponSO")]
 public class WeaponSO : ScriptableObject
 {
     [field: SerializeField, Tooltip("Ranged/Melee")]
     public WeaponType WeaponType { get; private set; }
 
-    [field: SerializeField, Tooltip("Bullet/attack speed")] 
+    [field: SerializeField, Tooltip("Bullet speed for Ranged Type /attack speed for Melee Type")] 
     public float   AttackSpeed { get; private set; }
 
-    [field: SerializeField, Tooltip("Minimum time between attacks/shots")] 
+    [field: SerializeField, Tooltip("Ttime between attacks/shots")] 
     public float CoolDown { get; private set; }
 
     [field: SerializeField, Tooltip("Damage dealt to an enemy with this weapon")] 
@@ -19,7 +19,7 @@ public class WeaponSO : ScriptableObject
     [field: SerializeField, Tooltip("The maximum distance at which a projectile can reach a target")]
     public float Distance { get; private set; }
 
-    [field: SerializeField, Tooltip("The angle within which projectiles can deviate from the target when fired")]
+    [field: SerializeField, Tooltip("The angle which projectiles can deviate from the target when fired")]
     public float SpreadAngle  { get; private set; }
 
     [field: SerializeField, Tooltip("Number of bullets fired simultaneously. For some weapons such as shotguns")]
