@@ -1,13 +1,11 @@
-﻿using System;
-
-public class PlayerCharacteristics : BaseCharacteristics
+﻿public class PlayerCharacteristics : BaseCharacteristics
 {
     public Stat Hp { get; private set; }
     public Stat Armour { get; private set; }
     public Stat MoveSpeed { get; private set; }
     public Stat Luck { get; private set; }
 
-    public event Action<float> ChangeHP;// for updating in PlayerHealth
+
 
     public PlayerCharacteristics(PlayerSO playerStats)
     {
@@ -23,13 +21,5 @@ public class PlayerCharacteristics : BaseCharacteristics
         Armour.RemoveAllModifiers();
         MoveSpeed.RemoveAllModifiers();
         Luck.RemoveAllModifiers();
-    }
-
-    public override StatModifier Buff(Stat param, float value, TypeModifier typeModifier)
-    {
-        StatModifier modifier = new(value, typeModifier);
-        param.AddModifier(modifier);
-        ChangeHP?.Invoke(Hp.Value);
-        return modifier;
     }
 }
